@@ -14,6 +14,44 @@ var question = $('question-title')
 var choices = $('#choices')
 var time = $('#time')
 
+
+
+function quiz() {
+    questions.removeClass('hide');
+    startScreen.addClass('hide');
+        
+            var i = 0
+            $('#question-title').text(questionArray[i].question);
+            console.log(questionArray[i].question)
+            for (var j = 0; j < questionArray[i].choices.length; j++) {
+                var choiceButtons = $('<button class="answer-button">' + questionArray[i].choices[j] + '</button>')
+                choices.append(choiceButtons)
+                console.log(questionArray[i].choices[j])
+            }
+
+            //if correct answer = [j]
+            $('.answer-button').on('click', function(event) {
+                event.preventDefault();
+                i++;
+
+            })
+           
+    
+}
+
+startButton.on("click", function(event) {
+    event.preventDefault();
+    quiz();
+})
+
+// console.log(questionArray[0]);
+
+        
+
+
+
+
+
 // function timer(timerLength) {
 //     // var timeAmount = setInterval(timerLength, 1000);
 //     time.append(timerLength)
@@ -40,15 +78,3 @@ var time = $('#time')
 
 // to stop the counter
 // clearInterval(inteval);
-
-function quiz() {
-    questions.removeClass('hide');
-    startScreen.addClass('hide')
-}
-
-startButton.on("click", function(event) {
-    event.preventDefault();
-    quiz();
-})
-
-console.log(questionArray[0]);
