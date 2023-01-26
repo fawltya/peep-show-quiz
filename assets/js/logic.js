@@ -13,8 +13,33 @@ var questions = $('#questions')
 var question = $('question-title')
 var choices = $('#choices')
 var time = $('#time')
-
 var i = 0
+var totalTime = 0;
+var k = 0;
+
+var timerInterval = setInterval(function() {
+    totalTime++
+    time.empty()
+    time.append(totalTime)
+
+    // timeEl.textContent = totalTime + " seconds left till colorsplosion.";
+
+    // if(totalTime === 0) {
+    //   // Stops execution of action at set interval
+    //   clearInterval(timerInterval);
+    //   // Calls function to create and append image
+    //   sendMessage();
+    // }
+    
+  }, 1000);
+  
+
+// function myTimer() {
+// //   time = k;
+//   k++;
+//   $(time).empty();
+//   time.append(k)  
+// }
 
 function quiz() {
     questions.removeClass('hide');
@@ -34,23 +59,31 @@ function quiz() {
                 
             }  
 
-
             $('.true').on('click', function(event) {
                 event.preventDefault();
                 i++;
                 $('#choices').empty();
                 quiz()
-                
-            
             })
+            
+            
+           
+            $('.false').on('click', function(event) {
+                event.preventDefault();
+                totalTime += 10;
+                // time.append(time + 10)
+            })
+            console.log(totalTime)
+
            
 } 
 
 startButton.on("click", function(event) {
     event.preventDefault();
     quiz();
+    // myInterval = setInterval(myTimer, 1000);
+    
 })
-console.log($('div#choices'))
 
 
 // console.log(questionArray[0]);
@@ -61,13 +94,10 @@ console.log($('div#choices'))
 
 
 
-// function timer(timerLength) {
-//     // var timeAmount = setInterval(timerLength, 1000);
-//     time.append(timerLength)
-// }
+
 
 // timer(0)
-// setInterval(timer(200000000000), 1000)
+
 
 
 
