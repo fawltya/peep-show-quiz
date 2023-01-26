@@ -14,35 +14,44 @@ var question = $('question-title')
 var choices = $('#choices')
 var time = $('#time')
 
-
+var i = 0
 
 function quiz() {
     questions.removeClass('hide');
     startScreen.addClass('hide');
         
-            var i = 0
+            
             $('#question-title').text(questionArray[i].question);
-            console.log(questionArray[i].question)
             for (var j = 0; j < questionArray[i].choices.length; j++) {
-                var choiceButtons = $('<button class="answer-button">' + questionArray[i].choices[j] + '</button>')
-                choices.append(choiceButtons)
-                console.log(questionArray[i].choices[j])
-            }
+                var correctAnswer = questionArray[i].choices[questionArray[i].answer]
+               
+                if (questionArray[i].choices[j] == correctAnswer) {
+                    var trueButton = $('<button class="answer-button true">' + questionArray[i].choices[j] + '</button>')
+                }   else {
+                    var falseButton = $('<button class="answer-button false">' + questionArray[i].choices[j] + '</button>')
+                    }
+                choices.append(trueButton, falseButton);
+                
+            }  
 
-            //if correct answer = [j]
-            $('.answer-button').on('click', function(event) {
+
+            $('.true').on('click', function(event) {
                 event.preventDefault();
                 i++;
-
+                $('#choices').empty();
+                quiz()
+                
+            
             })
            
-    
-}
+} 
 
 startButton.on("click", function(event) {
     event.preventDefault();
     quiz();
 })
+console.log($('div#choices'))
+
 
 // console.log(questionArray[0]);
 
