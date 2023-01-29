@@ -15,105 +15,91 @@ var choices = $('#choices')
 var time = $('#time')
 var i = 0
 var totalTime = 0;
-var k = 0;
-
-var timerInterval = setInterval(function() {
-    totalTime++
-    time.empty()
-    time.append(totalTime)
-
-    // timeEl.textContent = totalTime + " seconds left till colorsplosion.";
-
-    // if(totalTime === 0) {
-    //   // Stops execution of action at set interval
-    //   clearInterval(timerInterval);
-    //   // Calls function to create and append image
-    //   sendMessage();
-    // }
-    
-  }, 1000);
-  
-
-// function myTimer() {
-// //   time = k;
-//   k++;
-//   $(time).empty();
-//   time.append(k)  
-// }
 
 function quiz() {
     questions.removeClass('hide');
     startScreen.addClass('hide');
-        
-            
-            $('#question-title').text(questionArray[i].question);
-            for (var j = 0; j < questionArray[i].choices.length; j++) {
-                var correctAnswer = questionArray[i].choices[questionArray[i].answer]
-               
-                if (questionArray[i].choices[j] == correctAnswer) {
-                    var trueButton = $('<button class="answer-button true">' + questionArray[i].choices[j] + '</button>')
-                }   else {
-                    var falseButton = $('<button class="answer-button false">' + questionArray[i].choices[j] + '</button>')
-                    }
-                choices.append(trueButton, falseButton);
-                
-            }  
+    $('#question-title').text(questionArray[i].question);
+    for (var j = 0; j < questionArray[i].choices.length; j++) {
+        var correctAnswer = questionArray[i].choices[questionArray[i].answer]
+        if (questionArray[i].choices[j] == correctAnswer) {
+            var trueButton = $('<button class="answer-button true">' + questionArray[i].choices[j] + '</button>')
+        }   else {
+            var falseButton = $('<button class="answer-button false">' + questionArray[i].choices[j] + '</button>')
+            }
+        choices.append(trueButton, falseButton);
+    }  
 
-            $('.true').on('click', function(event) {
-                event.preventDefault();
-                i++;
-                $('#choices').empty();
-                quiz()
-            })
-            
-            
-           
-            $('.false').on('click', function(event) {
-                event.preventDefault();
-                totalTime += 10;
-                // time.append(time + 10)
-            })
-            console.log(totalTime)
+    $('.true').on('click', function(event) {
+        event.preventDefault();
+        i++;
+        $('#choices').empty();
+        quiz()
+    })
 
+    $('.false').on('click', function(event) {
+        event.preventDefault();
+        totalTime += 10;
+        // time.append(time + 10)
+    })
+    console.log(totalTime)
+    console.log(questionArray[i].question)
+    if (questionArray[i].question > questionArray[i].question.length) {
+    return endgame()
+    }
            
-} 
+}
 
 startButton.on("click", function(event) {
     event.preventDefault();
     quiz();
     // myInterval = setInterval(myTimer, 1000);
-    
+    setInterval(function() {
+        totalTime++
+        time.empty()
+        time.append(totalTime)
+      }, 1000);
 })
 
+function endgame() {
+    endScreen.removeClass('hide');
+    questions.addClass('hide');
+}
 
-// console.log(questionArray[0]);
+// Dark mode toggle
+function darkMode () {
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 
-        
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }    
+}
 
+toggleSwitch.addEventListener('change', switchTheme, false);
 
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark'); //add this
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light'); //add this
+    }    
+}
 
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-
-
-// timer(0)
-
-
-
-
-// var counter = 0;
-
-// for (counter < 100 ) {
-//     var interval = setInterval(function () {
-//         counter++;
-//       }, 1000);
-// }
-
-
-// // time.text(interval)
-// console.log(interval)
-
-
-
-// to stop the counter
-// clearInterval(inteval);
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+}
+darkMode()

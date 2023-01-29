@@ -10,17 +10,16 @@
   </head>
 
   <body>
+    
     <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
     <div class="timer">Time: <span id="time">0</span></div>
 
     <div class="wrapper">
       <div id="start-screen" class="start">
-        <h1>Coding Quiz Challenge</h1>
+        <h1>Peep Show Quiz</h1>
         <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
+          Answer the following questions in the fastest time you can. Keep in mind that incorrect answers will add 10 seconds onto your time!
         </p>
         <button id="start">Start Quiz</button>
       </div>
@@ -40,6 +39,16 @@
       </div>
 
       <div id="feedback" class="feedback hide"></div>
+    </div>
+
+
+    <div class="theme-switch-wrapper">
+      <em class="dark-mode-text">Dark Mode</em>
+      <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+      </label>
+      
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/questions.js"></script>
