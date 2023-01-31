@@ -1,6 +1,6 @@
 :root {
   --primary-color: #5a7783;
-  --secondary-color: #0e2d3b  ;
+  --secondary-color: #0e2d3b;
   --font-color: #091d26;
   --bg-color: #e7eced;
   --heading-color: #0b242f;
@@ -18,7 +18,7 @@ body {
   font-family: Arial;
   font-size: 120%;
   background-color: var(--bg-color);
-  color: var(--font-color)
+  color: var(--font-color);
 }
 
 a {
@@ -36,7 +36,7 @@ button {
   margin: 5px;
   cursor: pointer;
   font-size: 100%;
-  background-color: var(--bg-color) ;
+  background-color: var(--bg-color);
   border-radius: 5px;
   border-color: var(--font-color);
   padding: 2px 10px;
@@ -70,8 +70,9 @@ li {
   list-style: decimal inside none;
 }
 
-li:nth-child(odd) {
-  background-color: var(--bg-color);
+li:nth-child(1) {
+  color: var(--heading-color);
+  font-size: 3rem;
 }
 
 .wrapper {
@@ -103,17 +104,13 @@ li:nth-child(odd) {
 }
 
 .timer {
-  position: absolute;
-  top: 1vh;
-  /* left: 45%; */
+  position: relative;
+  top: 2vh;
   font-size: 3rem;
-  margin-left: auto;
-  margin-right: auto;
-  /* align-self: center; */
+  align-self: center;
 }
 
-
-/*Simple css to style it like a toggle switch*/
+/* toggle switch */
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
@@ -127,11 +124,11 @@ li:nth-child(odd) {
   height: 20px;
   position: relative;
   width: 45px;
-  margin-top: 5px
+  margin-top: 5px;
 }
 
 .theme-switch input {
-  display:none;
+  display: none;
 }
 
 .slider {
@@ -142,7 +139,7 @@ li:nth-child(odd) {
   position: absolute;
   right: 0;
   top: 0;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -152,7 +149,7 @@ li:nth-child(odd) {
   height: 16px;
   left: 2px;
   position: absolute;
-  transition: .4s;
+  transition: 0.4s;
   width: 16px;
 }
 
